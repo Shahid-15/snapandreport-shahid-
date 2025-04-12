@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
+    <link rel="stylesheet" href="../stylesheets/mainpage/style.css">
+    <link rel="stylesheet" href="../stylesheets/mainpage/utility.css">
+
+    <link rel="stylesheet" type="text/css" href="../stylesheets/mainpage/mapstyle.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style>
+     @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .blink {
+    animation: blink 2s ease-in-out infinite;
+  }
+    </style>
+
+    
+</head>
+<body>
+
+    <div class="container">
+        <div class="left">
+            <div class="sidebar1">
+
+                <div>
+
+                    <img class="" src="../images/mainpage/np.png" id="noparkingimage" alt="">
+                </div>
+                
+                
+                
+                <div id="username">
+                    Welcome! <%=name%>
+                </div>
+                
+            </div>
+
+            <div class="sidebar2 h-[80vh]  rounded-xl">
+
+                <div class="sideelement shadow-xl rounded-md">
+                    <img width="30" src="../images/mainpage/svgs/home.png" alt="home">
+                    <a href="/dashboard/<%= id%>"><span>Dashboard</span></a>
+                </div>
+
+                <div class="sideelement shadow-xl rounded-md">
+                    <img width="30" src="../images/mainpage/svgs/search.svg" alt="">
+                    <span>Search</span>
+                </div>
+
+                <div class="sideelement shadow-xl rounded-md">
+                    <img width="30" src="../images/mainpage/svgs/insights.svg" alt="">
+                    <span>Insights</span>
+                </div>
+
+               
+                
+
+                <div class="sideelement shadow-xl rounded-md">
+                    <img width="30" src="../images/mainpage/svgs/setting.svg" alt="">
+                    <span>Settings</span>
+                </div>
+
+                <div class="sideelement shadow-xl rounded-md">
+                    <img width="30" src="../images/mainpage/svgs/help.svg" alt="">
+                    <span>Help!</span>
+                </div>
+
+                <div class="flex flex-col gap-2  !mx-3">
+                    <span class="text-lg !blink text-white blink font-bold !text-red-500">How it Works!</span>
+                    <h2 class="flex gap-2 text-white font-medium bg-blue-800 rounded-xl  "><img class="invert" src="../images/mainpageImages/one.svg" alt=""><span class="text-[12px]">Snap a Photo of the improperly parked vehicle</span></h2>
+                    <h2 class="flex gap-2 text-white font-medium bg-blue-800 rounded-xl  "><img class="invert" src="../images/mainpageImages/two.svg" alt=""><span class="text-[12px]">Submit It through our app</span></h2>
+                    <h2 class="flex gap-2 text-white font-medium bg-blue-800 rounded-xl  "><img class="invert" src="../images/mainpageImages/three.svg" alt=""><span class="text-[12px]">Challan Issued to the vehicle owner</span></h2>
+                    <h2 class="flex gap-2 text-white font-medium bg-blue-800 rounded-xl  "><img class="invert" src="../images/mainpageImages/four.svg" alt=""><span class="text-[12px]">Reward Split between the government and you 💸</span></h2>
+                </div>
+
+               
+
+            </div>
+         
+           
+
+        </div>
+        
+        <div class="right">
+
+            <nav class="navbar shadow-xl">
+                
+                    <div class="hamburger">
+                        <img src="../images/mainpage/svgs/hamburger.svg" alt="Hamburger">
+                    </div>
+                    
+                    <div>
+                        <img width="115" src="../images/mainpage/logo.png" alt="snr logo">
+                    </div>
+                
+                   
+                <div class="moving-animation">
+                    <span>Snap and</span><span style="color: #a855f7;">Report</span>
+                </div>
+                
+                <div >
+                    
+                    <button class="logoutbtn"><img style="filter:invert(1);" src="../images/mainpage/svgs/logout.svg" alt=""> <a style="text-decoration: none; color: white;" href="/logout">Logout</a></button>
+                    <button class=" logoutbtn2"> <a style="text-decoration: none; color: white;" href="/logout"><img style="filter:invert(1);" src="../images/mainpage/svgs/logout.svg" alt=""></a></button>
+
+                </div>
+            
+    
+            </nav>
+
+            <div class="con">
+                <p class="moving-text">Capturing Image of government vehicles is strictly prohibited</p>
+            </div>
+
+            <div class="flex text-2xl font-bold text-center  gap-2">
+                        
+                <img class="" src="/images/mainpage/svgs/map.svg" alt="">
+                <h2>Live Map</h2>
+
+              </div>
+        
+            <div class="boxes">
+
+                <div class="box1 shadow-xl rounded-xl">
+
+           
+                      <div id="map"></div>
+                
+                      <script
+                        src="https://maps.gomaps.pro/maps/api/js?key=AlzaSyD83oERcA_WDpgphd0TWfQTzJbSt6kiq3d&callback=initMap&v=weekly"
+                        defer
+                      ></script>
+
+                     
+
+                </div>
+
+                <div class="box2 shadow-xl rounded-xl w-full">
+                    <div class="shadow-xl rounded-xl" id="camera">
+
+                    </div>
+                     
+                    <div class="!p-1 font-medium text-white border-2 cursor-pointer  border-2 rounded-xl bg-orange-800 border-2" onclick="document.getElementById('file-upload').click()"
+                     class="border bg-gray-300 p-5 cursor-pointer rounded-md">
+                        Upload Image
+                        <input  id="file-upload" type="file" class="hidden">
+                    </div>
+
+                    <textarea id="description" placeholder="Description" class="!p-2 text-bold resize-none border-2 rounded-lg" name="" rows="1" cols="30" id=""></textarea>
+                    
+                      <div class="groupofButton">
+                          
+                          <button id="campturebtn"  style="background-color:rgb(214, 120, 184); filter:invert(1);" class="cambtn" onclick="startCam()"><img src="../images/mainpage/camera.svg" alt=""><div>Start Camera</div></button>
+                          <button class=" cambtn flex justify-center items-center" onclick="resetCam()" ><img src="../images/mainpage/svgs/reset.svg" alt="">Reset Camera</button>
+                      
+                      <button onclick="SubmitReport()"  class=" bg-blue-500 cambtn flex justify-center items-center" id="submitbtn"><img src="../images/mainpage/svgs/submit.svg" alt="">Submit Report</button>
+                      </div>
+
+
+                </div>
+
+            </div>
+
+            
+            <!-- <div class="footer">
+                <p style="opacity: 0.3;">&copy; 2025 Snap and Report. All rights reserved.</p>
+                <p style="opacity: 0.6;">Contact us: <a style="opacity:0.4;" href="mailto:support@snapandreport.com">support@snapandreport.com</a></p>
+                <p style="opacity: 0.6;"><a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a></p>
+            </div> -->
+        </div>
+    </div>
+
+
+<script>
+
+let cameraDiv = document.getElementById('camera');
+
+let start = false;
+let capturedImage = null;
+
+// Get the actual width and height of the div
+let width = cameraDiv.offsetWidth;
+let height = cameraDiv.offsetHeight;
+
+let img = document.createElement("img")
+img.setAttribute("id","imgToChange")
+img.src = "https://cdn-icons-png.flaticon.com/128/3617/3617090.png";
+
+let div = document.createElement("div")
+
+div.append(img);
+cameraDiv.append(div)
+
+function startCam(){
+   
+
+    if(!start){
+
+   
+    let ele = document.getElementById("campturebtn");
+    ele.innerHTML = `<img src="../images/mainpage/camera.svg" alt=""><div>Capture</div>`;
+
+    Webcam.set({
+        width: width,
+        height: height,
+        image_format: 'jpeg',
+        jpeg_quality: 90
+    });
+    
+    Webcam.attach('#camera');
+    start=true;
+
+}
+
+else{
+
+    //you click the caputure button
+    Webcam.snap(function(url){
+
+        alert("Image captured")
+        Webcam.reset();
+        
+     
+        let cameraDiv = document.getElementById('camera');
+        cameraDiv.innerHTML = ""
+        let img = document.createElement("img")
+        img.setAttribute("id","imgToChange")
+        img.src = url;
+
+        let div = document.createElement("div")
+
+        div.append(img);
+        cameraDiv.append(div)
+        capturedImage = url;
+
+
+        
+        ///store the image into the db
+        // fetch('/storeimg',{
+        //     method:"POST",
+        //     headers:{
+        //         'Content-Type':'application/json'
+        //     },
+        //     body:JSON.stringify({img:url})
+        // })
+        
+        
+    })
+
+}
+}
+
+
+
+function resetCam(){
+    let ele = document.getElementById("campturebtn");
+    ele.innerHTML = `<img src="../images/mainpage/camera.svg" alt=""><div>Start Camera</div>`;
+        start=false
+        Webcam.reset();
+        let cameraDiv = document.getElementById('camera');
+        cameraDiv.innerHTML = ""
+        let img = document.createElement("img")
+        img.setAttribute("id","imgToChange")
+        img.src = "https://cdn-icons-png.flaticon.com/128/3617/3617090.png";
+
+        let div = document.createElement("div")
+
+        div.append(img);
+        cameraDiv.append(div)
+
+    }
+   
+    //****************************
+
+    //map code 
+    let map, geocoder, infowindow;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 15
+            });
+
+            geocoder = new google.maps.Geocoder();
+            infowindow = new google.maps.InfoWindow();
+
+            // Get user's current location
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const userLocation = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+
+                        // Center map to user's location
+                        map.setCenter(userLocation);
+
+                        // Geocode user's location to get address
+                        geocodeLatLng(userLocation);
+                    },
+                    () => {
+                        handleLocationError(true);
+                    }
+                );
+            } else {
+                handleLocationError(false);
+            }
+        }
+
+        function geocodeLatLng(latlng) {
+            geocoder.geocode({ location: latlng }, (results, status) => {
+                if (status === "OK") {
+                    if (results[0]) {
+                        const marker = new google.maps.Marker({
+                            position: latlng,
+                            map: map
+                        });
+
+                        // Display address in InfoWindow
+                        infowindow.setContent(results[0].formatted_address);
+                        infowindow.open(map, marker);
+                    } else {
+                        alert("No results found");
+                    }
+                } else {
+                    alert("Geocoder failed due to: " + status);
+                }
+            });
+        }
+
+        function handleLocationError(browserHasGeolocation) {
+            alert(browserHasGeolocation
+                ? "Error: The Geolocation service failed."
+                : "Error: Your browser doesn't support geolocation.");
+        }
+
+        let flag = false;
+
+    document.getElementsByClassName("hamburger")[0].addEventListener("click",()=>{
+        if(flag){
+            document.getElementsByClassName("left")[0].style.left = '-100%';
+            flag = false
+        }
+
+        else{
+            flag=true
+            document.getElementsByClassName("left")[0].style.left = '0';
+            document.getElementsByClassName("left")[0].style.zIndex = '10';
+        }
+    })
+
+    async function SubmitReport(){
+
+        console.log(capturedImage)
+       let value =  document.getElementById("description").value
+
+
+       let data = {
+          
+        img:capturedImage,
+        description:value
+
+       }
+
+      let resp = await  fetch(`/storeimg`,{
+        method:"POST",
+        headers:{
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify(data)
+       })
+
+       resp.text().then((res)=>{
+
+          console.log(res)
+          alert("report submited")
+          location.reload();
+       })
+
+       
+    }
+    
+    
+</script>
+
+<script src="../javascript/mainpage/index.js"></script>
+    
+</body>
+</html>

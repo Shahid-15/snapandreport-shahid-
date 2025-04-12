@@ -1,0 +1,54 @@
+select{
+    appearance: none;
+    
+    width: 20rem;
+    padding: 5px;
+    border-radius: 40px;
+    cursor: pointer;
+    background-color: rgb(41, 40, 52);
+    color: white;
+    padding: 4px 6px;
+  }
+  
+  #downarrow{
+  
+    position: absolute;
+    right: 123px;
+    top: 2px;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .justify-center {
+    justify-content: center;
+  }
+  
+  .items-center {
+    align-items: center;
+  }
+  
+  /* Narrow, Rounded Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px; /* Narrow width */
+    height: 6px; /* For horizontal scrollbars */
+  }
+  
+  /* Scrollbar Track (Background) */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Light gray background */
+    border-radius: 10px; /* Rounded edges */
+  }
+  
+  /* Scrollbar Thumb (Draggable part) */
+  ::-webkit-scrollbar-thumb {
+    background: #888; /* Scrollbar color */
+    border-radius: 10px; /* Rounded corners */
+  }
+  
+  /* Scrollbar Thumb on Hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snap and Report</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f8fc;
+            color: #333;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #ffffff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+        }
+        .header img {
+            height: 50px;
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            gap: 1.5rem;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+        nav a:hover {
+            color: #0056b3;
+        }
+
+        .footer {
+            background-color: #fff;
+            color: #555;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .footer p {
+            margin: 0.5rem 0;
+            font-size: 16px;
+        }
+        .footer a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+        }
+        /* Container Styles */
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #0056b3;
+            margin-bottom: 1rem;
+        }
+
+        /* Camera Preview Styles */
+        .camera {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background-color: #e8f0ff;
+            border: 2px dashed #0056b3;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #666;
+        }
+
+        /* Captured Image Output */
+        .output {
+            margin: 1rem 0;
+            padding: 1rem;
+            background-color: #f0f8ff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+
+        .output img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: contain;
+            border-radius: 8px;
+            border: 1px solid #0056b3;
+        }
+
+        /* Text Box */
+        .description {
+            margin-top: 1rem;
+        }
+
+        .description textarea {
+            width: 100%;
+            height: 80px;
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            resize: none;
+        }
+
+        /* Button Styles */
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+
+        .buttons button {
+            flex: 1;
+            margin: 0 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: #ffffff;
+        }
+
+        .buttons button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .start-btn {
+            background-color: #28a745;
+        }
+
+        .stop-btn {
+            background-color: #dc3545;
+        }
+
+        .capture-btn {
+            background-color: #0056b3;
+        }
+
+        .logout-btn {
+            background-color: #ff9933;
+        }
+
+        /* Carousel Styles */
+        .carousel-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 2rem auto;
+    overflow: hidden;
+    border: 3px solid #004080; /* Darker blue border */
+    border-radius: 10px;
+    background-color: #e3f2fd; /* Light blue background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carousel {
+    display: flex;
+    gap: 10px;
+    animation: scroll 8s linear infinite;
+}
+
+.carousel img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 2px solid #007bff; /* Blue border around images */
+}
+
+/* Responsive Carousel */
+@media (max-width: 768px) {
+    .carousel img {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    
+    <div class="header">
+        <img src="../images/logo1.png" alt="Logo 1">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <!-- <a href="contact.html.html">Contact</a>
+            <a href="">FAQ</a> -->
+        </nav>
+        <img src="../images/logo2.webp" alt="Logo 2">
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <h2>Capture Your Image</h2>
+        <!-- Camera Preview -->
+        <div class="camera" id="camera">Camera Preview</div>
+
+        <!-- Captured Image -->
+        <div class="output" id="output">
+            <p>No image captured yet.</p>
+        </div>
+
+        <!-- Description Box -->
+        <div class="description">
+            <textarea placeholder="Enter a description..."></textarea>
+        </div>
+
+        <!-- Buttons -->
+        <div class="buttons">
+            <button class="start-btn" onclick="startCamera()">Start Camera</button>
+            <button class="stop-btn" onclick="stopCamera()">Stop</button>
+            <button class="capture-btn" onclick="captureImage()">Capture</button>
+            <button class="logout-btn"><a style="text-decoration: none; color: white;" href="/">Logout</a></button>
+        </div>
+    </div>
+
+    <!-- Image Carousel -->
+    <div class="carousel-container">
+        <div class="carousel">
+            <img src="../images/mainpageImages/image1.webp" alt="Image 1">
+            <img src="../images/mainpageImages/image2.jpg" alt="Image 2">
+            <img src="../images/mainpageImages/image3.jpg" alt="Image 3">
+            <img src="../images/mainpageImages/image4.jpg" alt="Image 4">
+            <img src="../images/mainpageImages/image5.webp" alt="Image 5">
+            <img src="../images/mainpageImages/image6.jpg" alt="Image 1">
+            <img src="../images/mainpageImages/image7.jpg" alt="Image 2">
+            <img src="../images/mainpageImages/image1.webp" alt="Image 3">
+            <img src="../images/mainpageImages/image2.jpg" alt="Image 4">
+            <img src="../images/mainpageImages/image3.jpg" alt="Image 5">
+        </div>
+    </div>
+
+    <!-- Footer -->
+   
+    <script>
+        let camera = document.getElementById("camera");
+        let output = document.getElementById("output");
+        let stream;
+
+        function startCamera() {
+            navigator.mediaDevices
+                .getUserMedia({ video: true })
+                .then((mediaStream) => {
+                    stream = mediaStream;
+                    camera.innerHTML = "";
+                    const video = document.createElement("video");
+                    video.srcObject = stream;
+                    video.autoplay = true;
+                    video.style.width = "100%";
+                    video.style.borderRadius = "10px";
+                    camera.appendChild(video);
+                })
+                .catch((err) => {
+                    console.error("Error accessing camera:", err);
+                });
+        }
+
+        function stopCamera() {
+            if (stream) {
+                let tracks = stream.getTracks();
+                tracks.forEach((track) => track.stop());
+                camera.innerHTML = "Camera Preview";
+                stream = null;
+            }
+        }
+
+        function captureImage() {
+            if (!stream) {
+                alert("Camera is not started!");
+                return;
+            }
+
+            const video = camera.querySelector("video");
+            const canvas = document.createElement("canvas");
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            const context = canvas.getContext("2d");
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            const imageDataURL = canvas.toDataURL("image/jpeg");
+           fetch('/storeimg',{
+            method:"POST",
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify({img:imageDataURL})
+           })
+         
+
+            output.innerHTML = `<img src="${imageDataURL}" alt="Captured Image">`;
+        }
+
+        function logout() {
+            alert("Logged out!");
+        }
+    </script>
+    
+    <div class="footer">
+        <p>&copy; 2025 Snap and Report. All rights reserved.</p>
+        <p>Contact us: <a href="mailto:support@snapandreport.com">support@snapandreport.com</a></p>
+        <p><a href="#">Terms of Service</a> | <a href="#">Privacy Policy</a></p>
+    </div>
+</body>
+</html>
