@@ -22,5 +22,5 @@ jobs:
 
       - name: 🚀 Deploy to Railway
         env:
-          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-        run: npx @railway/cli up --environment production --service testing-the-repo --ci
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}  
+        run: npx @railway/cli up --environment production --service snapandreport-shahid- --ci
