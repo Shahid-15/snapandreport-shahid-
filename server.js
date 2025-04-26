@@ -192,12 +192,12 @@ app.get('/showRes',isLoggedIn, async (req,res)=>{
   //here the work is remaining and il completed it 
   let id = req.usr.id;
 
-  let postData = await postModel.findOne({userId:id});
-  console.log(postData)
+  let postData = await postModel.find({userId:id});
+  let arr = Array.from(postData)
+  let len  = arr.length;
+ 
 
-  console.log(id);
-
-  res.render('result',{userId:id,data:postData})
+  res.render('result',{userId:id,data:arr[len-1]})
 })
 
 function isLoggedIn(req,res,next){

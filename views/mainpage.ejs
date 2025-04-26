@@ -214,7 +214,10 @@ function startCam(){
         width: width,
         height: height,
         image_format: 'jpeg',
-        jpeg_quality: 90
+        jpeg_quality: 90,
+        constraints: {
+    facingMode: { exact: "environment" }
+  }
     });
     
     Webcam.attach('#camera');
