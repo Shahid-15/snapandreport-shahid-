@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+</head>
+<body>
+    <div class="flex flex-col justify-center items-center bg-orange-100 mt-2 md:mt-10 rounded-xl shadow-xl border-blue-500 gap-3 border-5 h-[90vh] mx-10 md:mx-40">
+
+        <div class="flex flex-col md:flex-row justify-center items-center mx-5">
+            <h2 class="text-xl md:text-5xl font-bold ">Thank You For Your <span class="text-red-500">Report!</span></h2>
+            <img width="120" src="../public/images/homepageImages/logo.png" alt="">
+        </div>
+        <p class=""><strong>Report ID : </strong><%=data._id%></p>
+        <p><strong>Detected Plate : </strong><%=data.plateNumber%></p>
+        <p class="mx-5"><strong>Location:</strong><%=data.address%></p>
+        <p><strong>Date:</strong> April 26, 2025</p>
+        <img src="<%=data.image%>" alt="Vehicle Image" width="100" />
+        <hr />
+        <p class="text-xl  text-center md:text-2xl font-semibold text-green-500">We will verify the violation and notify you of any updates.</p>
+        <div class="flex gap-3 flex-col md:flex-row md:gap-10">                                                                                                                                                                                                                                            
+            <a class="border text-center  text-black font-medium p-1 hover:bg-green-500 hover:scale-105 transition rounded-md bg-orange-300" href="/">Back to Home</a>  <a class="border text-black font-bold  p-1 hover:bg-green-500 hover:scale-105 transition rounded-md bg-orange-300" href="/rendermain/<%=userId%>">Report Another Violation</a>
+        </div>
+        
+    </div>
+    
+</body>
+</html>

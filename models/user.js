@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-// mongoose.connect("mongodb://localhost:27017/SnapAndReport")
-mongoose.connect("mongodb+srv://shahidAtlas:shahid12345@cluster0.4q0sb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+mongoose.connect("mongodb://localhost:27017/SnapAndReport")
+// mongoose.connect("mongodb+srv://shahidAtlas:shahid12345@cluster0.4q0sb.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 
 
     let userSchema  = mongoose.Schema({
@@ -13,12 +13,12 @@ mongoose.connect("mongodb+srv://shahidAtlas:shahid12345@cluster0.4q0sb.mongodb.n
         username:{
             type:String,
             required:true,
-            unique:true
+            
         },
         email:{
             type:String,
             required:true,
-            unique:true
+            
         },
         password:{
              

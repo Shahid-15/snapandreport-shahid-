@@ -184,6 +184,7 @@
 
 let cameraDiv = document.getElementById('camera');
 
+let address = null;
 let start = false;
 let capturedImage = null;
 
@@ -324,8 +325,12 @@ function resetCam(){
                             position: latlng,
                             map: map
                         });
-
-                        // Display address in InfoWindow
+                        if(results && results[0] && results[0].formatted_address){
+console.log("Yea address is updated")
+                            address = results[0].formatted_address
+                        }
+                        
+                       // Display address in InfoWindow
                         infowindow.setContent(results[0].formatted_address);
                         infowindow.open(map, marker);
                     } else {
@@ -367,7 +372,8 @@ function resetCam(){
        let data = {
           
         img:capturedImage,
-        description:value
+        description:value,
+        address
 
        }
 
@@ -382,8 +388,7 @@ function resetCam(){
        resp.text().then((res)=>{
 
           console.log(res)
-          alert("report submited")
-          location.reload();
+          window.location.href = "/showRes";
        })
 
        

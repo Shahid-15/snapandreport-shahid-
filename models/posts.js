@@ -12,10 +12,18 @@ const mongoose = require('mongoose');
             required:true,
             unique:true
         },
+
         description:{
             type:String
         },
 
+        plateNumber:{
+            type:String
+        },
+        
+        address:{
+            type:String
+        }
 
     
     }, { timestamps: true })

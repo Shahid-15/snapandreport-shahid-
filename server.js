@@ -9,6 +9,10 @@ const cookieParser = require('cookie-parser')
 const cloudinary = require('cloudinary').v2;
 require('dotenv').config();
 
+const axios = require('axios');
+const FormData = require('form-data');
+const fs = require('fs');
+
 
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
@@ -118,7 +122,8 @@ app.get('/logout',(req,res)=>{
 })
 
 app.post('/storeimg',isLoggedIn, async (req, res) => {
-    const { img ,description} = req.body;
+    const { img ,description,address} = req.body;
+    let plateNumber = "";
   
     if (!img) {
       return res.status(400).send("No image provided");
@@ -132,15 +137,42 @@ app.post('/storeimg',isLoggedIn, async (req, res) => {
   
       console.log(result.secure_url);
 
+      //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+      //code to detect the number from the number plate
+
+      
+
+let response = await axios.post('https://api.platerecognizer.com/v1/plate-reader/', 
+  {
+    upload_url: result?.secure_url  
+  },
+  {
+    headers: {
+      Authorization: 'Token b8012c9783442992ed59435330a2d070ae8bfc5d',
+      'Content-Type': 'application/json'  
+    }
+  }
+)
+
+if(response.data.results[0]?.plate){
+  plateNumber = response.data.results[0]?.plate;
+}
+     
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+
+
       let objID = await userModel.findOne({email:req.usr.email},{_id:1})
-      console.log(objID._id)
-      console.log(req.usr)  
+       
 
       let postUser = await postModel.create({
         userId:objID._id,
         image:result.secure_url,
-        description
+        description,
+        address,
+        plateNumber
       })
+
 console.log("Image stord successfully");
       res.send(`Short URL: ${result.secure_url}`); 
       
@@ -155,6 +187,18 @@ app.listen(process.env.PORT,()=>{``
     console.log("Server is running at http://localhost:3000")
 })
 
+app.get('/showRes',isLoggedIn, async (req,res)=>{
+
+  //here the work is remaining and il completed it 
+  let id = req.usr.id;
+
+  let postData = await postModel.findOne({userId:id});
+  console.log(postData)
+
+  console.log(id);
+
+  res.render('result',{userId:id,data:postData})
+})
 
 function isLoggedIn(req,res,next){
 
