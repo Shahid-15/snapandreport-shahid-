@@ -211,16 +211,16 @@ function startCam(){
     ele.innerHTML = `<img src="../images/mainpage/camera.svg" alt=""><div>Capture</div>`;
      
     Webcam.set({
-  width: 360,             // Preview width (smaller for mobile screens)
-  height: 640,            // Preview height (portrait orientation for mobile)
-  dest_width: 720,        // Capture bigger image (HD)
-  dest_height: 1280,
+  width: 1280,              // Logical width of the camera feed (matches landscape 16:9 ratio)
+  height: 720,              // Logical height (same as your container height)
+  dest_width: 1280,         // Captured image width (no scaling/stretching)
+  dest_height: 720,         // Captured image height (matches live preview)
   image_format: 'jpeg',
-  jpeg_quality: 90,       // 90 is good balance between quality and file size
+  jpeg_quality: 90,
   constraints: {
-    facingMode: { exact: "environment" },   // Rear camera
-    width: { ideal: 720 },
-    height: { ideal: 1280 }
+    facingMode: { exact: "environment" },  // Rear camera
+    width: { ideal: 1280 },
+    height: { ideal: 720 }
   }
 });
     
