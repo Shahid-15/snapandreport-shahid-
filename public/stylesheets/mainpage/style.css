@@ -75,20 +75,24 @@
    flex-direction: column;
    align-items: center;
    gap: 20px;
+   overflow-y: scroll;
 }
 
 #camera{
 margin-top: 15px;
 border:2px solid black;
-height: 200px;
-width: 250px;
+height: 720px;
+width: 100%;
 display: flex;
 justify-content: center;
 align-items: center;
 background-color: #27272a;
 
-    
 }
+#camera video{
+    object-fit: cover;
+}
+
 
 .dropdown{
     position: relative;

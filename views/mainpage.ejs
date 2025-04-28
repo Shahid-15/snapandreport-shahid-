@@ -136,7 +136,7 @@
                       <div id="map"></div>
                 
                       <script
-                        src="https://maps.gomaps.pro/maps/api/js?key=AlzaSyD83oERcA_WDpgphd0TWfQTzJbSt6kiq3d&callback=initMap&v=weekly"
+                        src="https://maps.gomaps.pro/maps/api/js?key=AlzaSyFQz1QaYcS1nqA25RmTWg7xXwR1YPo7DBa&callback=initMap&v=weekly"
                         defer
                       ></script>
 
@@ -145,7 +145,7 @@
                 </div>
 
                 <div class="box2 shadow-xl rounded-xl w-full">
-                    <div class="shadow-xl rounded-xl" id="camera">
+                    <div  class="shadow-xl rounded-xl" id="camera">
 
                     </div>
                      
@@ -189,8 +189,8 @@ let start = false;
 let capturedImage = null;
 
 // Get the actual width and height of the div
-let width = cameraDiv.offsetWidth;
-let height = cameraDiv.offsetHeight;
+let widthD = cameraDiv.offsetWidth;
+let heightD = cameraDiv.offsetHeight;
 
 let img = document.createElement("img")
 img.setAttribute("id","imgToChange")
@@ -211,13 +211,15 @@ function startCam(){
     ele.innerHTML = `<img src="../images/mainpage/camera.svg" alt=""><div>Capture</div>`;
 
     Webcam.set({
-        width: width,
-        height: height,
+        width:1270,
+        height:720,
+        dest_width: 1280,  
+        dest_height: 720,
         image_format: 'jpeg',
-        jpeg_quality: 90,
-        constraints: {
-    facingMode: { exact: "environment" }
-  }
+        jpeg_quality: 100,
+//         constraints: {
+//     facingMode: { exact: "environment" }
+//   }
     });
     
     Webcam.attach('#camera');
@@ -239,6 +241,9 @@ else{
         let img = document.createElement("img")
         img.setAttribute("id","imgToChange")
         img.src = url;
+        img.style.width = "100%"; // Important!
+        img.style.height = "100%"; // Important!
+        img.style.objectFit = "cover";
 
         let div = document.createElement("div")
 
