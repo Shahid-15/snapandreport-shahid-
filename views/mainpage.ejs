@@ -209,20 +209,18 @@ function startCam(){
    
     let ele = document.getElementById("campturebtn");
     ele.innerHTML = `<img src="../images/mainpage/camera.svg" alt=""><div>Capture</div>`;
-     
+
     Webcam.set({
-  width: 1280,              // Logical width of the camera feed (matches landscape 16:9 ratio)
-  height: 720,              // Logical height (same as your container height)
-  dest_width: 1280,         // Captured image width (no scaling/stretching)
-  dest_height: 720,         // Captured image height (matches live preview)
-  image_format: 'jpeg',
-  jpeg_quality: 90,
-  constraints: {
-    facingMode: { exact: "environment" },  // Rear camera
-    width: { ideal: 1280 },
-    height: { ideal: 720 }
+        width:1270,
+        height:720,
+        dest_width: 1280,  
+        dest_height: 720,
+        image_format: 'jpeg',
+        jpeg_quality: 100,
+        constraints: {
+    facingMode: { exact: "environment" }
   }
-});
+    });
     
     Webcam.attach('#camera');
     start=true;
