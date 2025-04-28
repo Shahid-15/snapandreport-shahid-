@@ -211,16 +211,19 @@ function startCam(){
     ele.innerHTML = `<img src="../images/mainpage/camera.svg" alt=""><div>Capture</div>`;
 
     Webcam.set({
-        width:1270,
-        height:720,
-        dest_width: 1280,  
-        dest_height: 720,
-        image_format: 'jpeg',
-        jpeg_quality: 100,
-        constraints: {
+  width: 1280,
+  height: 720,
+  dest_width: 1280,
+  dest_height: 720,
+  image_format: 'jpeg',
+  jpeg_quality: 100,
+  constraints: {
+    width: { ideal: 1280 },
+    height: { ideal: 720 },
     facingMode: { exact: "environment" }
   }
-    });
+});
+
     
     Webcam.attach('#camera');
     start=true;
