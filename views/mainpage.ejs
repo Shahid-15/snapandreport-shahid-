@@ -211,12 +211,12 @@ function startCam(){
     ele.innerHTML = `<img src="../images/mainpage/camera.svg" alt=""><div>Capture</div>`;
 
     Webcam.set({
-        width:1270,
-        height:720,
-        dest_width: 1280,  
-        dest_height: 720,
+        width:640,
+        height:960,
+        dest_width: 640,  
+        dest_height: 960,
         image_format: 'jpeg',
-        jpeg_quality: 100,
+        jpeg_quality: 90,
         constraints: {
     facingMode: { exact: "environment" }
   }
