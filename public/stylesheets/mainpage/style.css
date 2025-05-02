@@ -211,12 +211,12 @@ background-color: #27272a;
     font-family: "Poppins", serif;
    
     font-weight: bold;
-     /* Keeps the same font */
-    color: black; /* Ensures text remains consistent */
+    
+    color: black; 
     display: inline-block;
     white-space: nowrap;
     overflow: hidden;
-    /* width: 260px; */
+   
 }
 
 .text-purple {
@@ -252,18 +252,19 @@ background-color: #27272a;
     display: inline-block;
     white-space: nowrap;
     position: absolute;
-    left: -100%; /* Start from outside the left */
+    left: 100%; 
     animation: moveText 19s linear infinite;
 }
 
 @keyframes moveText {
-    from {
-        left: -100%; /* Start off-screen */
+    0% {
+        left: 100%; 
     }
-    to {
-        left: 100%; /* Move fully to the right */
+    100% {
+        left: -100%; 
     }
 }
+
 
 .hamburger{
 
