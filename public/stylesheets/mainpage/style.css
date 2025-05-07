@@ -82,7 +82,7 @@
 margin-top: 15px;
 border:2px solid black;
 height: 400px;
-width: 100%;
+width: 400px;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -92,7 +92,7 @@ background-color: #27272a;
 #camera video{
     /* object-fit: cover; */
     /* object-fit: cover; */
-    width: 100%;
+    width: 400px;
     height: 400px;
 }
 
