@@ -213,7 +213,6 @@ function startCam(){
     Webcam.set({
         width:widthD,
         height:heightD,
-        
         image_format: 'jpeg',
         jpeg_quality: 90,
         constraints: {
@@ -241,7 +240,7 @@ else{
         img.setAttribute("id","imgToChange")
         img.src = url;
         img.style.width = "100%"; // Important!
-        img.style.height = "100%"; // Important!
+        img.style.height = "400px"; // Important!
         img.style.objectFit = "cover";
 
         let div = document.createElement("div")
