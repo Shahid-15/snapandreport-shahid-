@@ -6,6 +6,8 @@
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
+
+
 </head>
 <body>
     <div class="flex flex-col justify-center items-center bg-orange-100 mt-2 md:mt-10 rounded-xl shadow-xl border-blue-500 gap-3 border-5 h-[90vh] mx-10 md:mx-40">
@@ -15,7 +17,7 @@
             <img width="120" src="../public/images/homepageImages/logo.png" alt="">
         </div>
         <p class=""><strong>Report ID : </strong><%=data._id%></p>
-        <p><strong>Detected Plate : </strong><%=data.plateNumber%></p>
+        <p class="uppercase"><strong>Detected Plate : </strong><%=data.plateNumber%></p>
         <p class="mx-5"><strong>Location:</strong><%=data.address%></p>
         <p><strong>Date:</strong> April 26, 2025</p>
         <img src="<%=data.image%>" alt="Vehicle Image" width="100" />
