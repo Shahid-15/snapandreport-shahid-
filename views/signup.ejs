@@ -6,10 +6,10 @@
     <title>Sign Up Page</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="font-sans bg-gray-100 min-h-screen flex flex-col items-center">
+<body class="font-sans bg-gray-100 min-h-screen flex flex-col items-center  bg-[url('/images/bgimages/back4.jpeg')]   ">
 
     <!-- Header -->
-    <div class="fixed top-0 w-full bg-white shadow-md z-10 flex justify-between items-center px-6 py-4">
+    <div class="fixed bg-slate-200 top-0 w-full  shadow-md z-10 flex justify-between items-center px-6 py-1">
         <img src="../images/DashobardImages/logo.png" alt="Logo 1" width="100">
         <nav class="flex gap-6">
             <a href="/" class="text-gray-800 text-lg hover:text-blue-600">Home</a>
@@ -19,26 +19,26 @@
     </div>
 
     <!-- Container -->
-    <div class="w-full max-w-md mt-[20vh] h-[460px] p-6 bg-white rounded-lg shadow-md text-center mx-4">
-        <h2 class="text-4xl font-semibold text-gray-800 mb-6 ">Register</h2>
+    <div class="w-full max-w-md mt-[20vh] h-[460px] p-6 bg-white rounded-lg shadow-md text-center mx-4   bg-[url('/images/bgimages/back2.jpeg')]">
+        <h2 class="text-4xl font-semibold text-gray-800 mb-6  text-white">Register</h2>
         <form action="/register" method="POST" class="space-y-4 text-left">
             <div>
-                <label for="username" class="block text-sm text-gray-600 mb-1">Username</label>
+                <label for="username" class="block text-sm text-gray-600 mb-1 text-white">Username</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username" required 
                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
             <div>
-                <label for="first-name" class="block text-sm text-gray-600 mb-1">Name</label>
+                <label for="first-name" class="block text-sm text-gray-600 mb-1 text-white">Name</label>
                 <input type="text" id="first-name" name="name" placeholder="Enter your first name" required 
                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
             <div>
-                <label for="email" class="block text-sm text-gray-600 mb-1">Email</label>
+                <label for="email" class="block text-sm text-gray-600 mb-1 text-white">Email</label>
                 <input type="email" id="email" name="email" placeholder="Enter your email" required 
                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
             <div>
-                <label for="password" class="block text-sm text-gray-600 mb-1">Password</label>
+                <label for="password" class="block text-sm text-gray-600 mb-1 text-white">Password</label>
                 <input type="password" id="password" name="password" placeholder="Enter your password" required 
                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
             </div>
