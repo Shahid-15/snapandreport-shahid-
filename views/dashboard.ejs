@@ -332,7 +332,9 @@ display: none;
 
         let openSidebar = false;
         function fun(sectionId,event){
-
+           
+            document.getElementsByClassName("sidebar")[0].style.left = "-100%";
+            openSidebar = false;
 
             let spans = document.getElementsByClassName("section")
             let sidebarElements = Array.from(document.getElementsByClassName("sideEle"))

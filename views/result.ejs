@@ -17,9 +17,9 @@
             <img width="120" src="../public/images/homepageImages/logo.png" alt="">
         </div>
         <p class=""><strong>Report ID : </strong><%=data._id%></p>
-        <p class="uppercase font-bold"><strong>Detected Plate : </strong><%=data.plateNumber%></p>
+        <p ><strong>Detected Plate : </strong><span class="uppercase"><%=data.plateNumber%></span></p>
         <p class="mx-5"><strong>Location:</strong><%=data.address%></p>
-        <p><strong>Date:</strong> April 26, 2025</p>
+        <p ><strong id="show"></strong></p>
         <img src="<%=data.image%>" alt="Vehicle Image" width="100" />
         <hr />
         <p class="text-xl  text-center md:text-2xl font-semibold text-green-500">We will verify the violation and notify you of any updates.</p>
@@ -28,6 +28,15 @@
         </div>
         
     </div>
+
+
+    <script>
+
+        let now = new Date();
+        const dateTimeString = now.toLocaleString();
+        document.getElementById("show").textContent = dateTimeString;
+
+    </script>
     
 </body>
 </html>

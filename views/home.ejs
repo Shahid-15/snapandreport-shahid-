@@ -20,6 +20,27 @@
         @keyframes blink {
             50% { opacity: 0; }
         }
+
+       @keyframes appear {
+
+        from{
+            opacity: 0;
+            scale: 0;
+        }
+        to{
+            opacity: 1;
+            scale: 1;
+        }
+        
+        
+       }
+       .blockB{
+        animation: appear  linear;
+        animation-timeline: view();
+        animation-range: entry 0 cover 20%;
+
+       }
+
         </style>
 </head>
 <body  class="bg-[url('/images/bgimages/back3.webp')] bg-cover bg-center">
@@ -27,10 +48,10 @@
     <div class="con mb-12">
 
         
-        <nav class="sticky flex justify-between  top-0 bg-slate-300 shadow-lg p-1">
+        <nav class="sticky flex justify-between  top-0 bg-slate-300 shadow-lg p-1 z-10  ">
             
             
-            <div>
+            <div >
                 <img width="130" src="../images/homepageImages/logo.png" alt="logosnr">
             </div>
             <div class="font bold items-center flex">
@@ -46,7 +67,7 @@
         </nav>
         
 
-    <div class=" bg-[#2c2927] border w-[90vw] ml-6 flex flex-col md:flex-row items-center md:items-start md:ml-14  rounded-xl  h-[600px] md:h-[400px] mt-6">
+    <div class="blockB bg-[#2c2927] border w-[90vw] ml-6 flex flex-col md:flex-row items-center md:items-start md:ml-14  rounded-xl  h-[600px] md:h-[400px] mt-6">
 
                 <div class="flex flex-col text-white gap-6 m-5 w-[500px]">
 
@@ -85,14 +106,14 @@
 
           
         
-            <div class="flex flex-col gap-3 mt-14 items-center mx-10  md:mx-30 bg-slate-200 p-5 rounded-xl">
+            <div class="flex flex-col gap-3 mt-14 items-center mx-10  md:mx-30 bg-slate-200 p-5 rounded-xl blockB">
                 <p class=" text-2xl md:text-5xl font-bold"><b class="text-green-500">P</b>ark it wrong, it won’t stay long—snap and report, make <span class="text-blue-400">roads strong!</span> </p>
 
                 <h2 class="text-gray-500 font-medium flex gap-3 items-center ">Anywhere in India <img width="40"s src="../images/homepageImages/indianLogo.svg" alt="indian logo"> anytime.</h2>
                 <button class="border p-3 border-2 border-black cursor-pointer hover:scale-105 transition ease-out bg-purple-500 text-white font-semibold rounded-xl ">Start Snapping</button>
             </div>
 
-            <div class="mx-10 md:mx-20 mt-10">
+            <div class="mx-10 md:mx-20 mt-10 blockB">
                 <div class="text-center my-6">
 
                     <span class="bg-yellow-500 font-medium p-1 rounded-lg">How it works</span>
@@ -132,8 +153,8 @@
 
             </div>
         
-            <footer class="mt-10 mx-10 md:mx-20">
-                <div class="flex gap-14">
+            <footer class="mt-10 mx-10 md:mx-20 ">
+                <div class="flex gap-14 ">
 
                   <div class="text-gray-500 cursor-pointer">
                     <p class="hover:underline text-lg font-bold mb-2">Snappers</p>
@@ -147,7 +168,7 @@
                     </div>
                   </div>
 
-                  <div class="text-gray-500 cursor-pointer">
+                  <div class="text-gray-500 cursor-pointer ">
                     <div class="flex flex-col gap-2">
 
                         <p class="hover:underline text-lg font-bold mb-1">Solvers</p>
@@ -159,7 +180,7 @@
                     </div>
                   </div>
 
-                  <div class="text-gray-500 cursor-pointer  hidden md:block" >
+                  <div class="text-gray-500 cursor-pointer  hidden md:block " >
                     <p class="hover:underline text-lg font-bold mb-2">About Us
                     </p>
                     <div class="flex flex-col gap-2">
