@@ -20,7 +20,7 @@ cloudinary.config({
     api_secret: process.env.CLOUDINARY_SECRET_KEY,
   });
 
-  
+
 
 app.set("view engine","ejs");
 app.use(cookieParser())
